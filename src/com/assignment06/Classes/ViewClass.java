@@ -1,9 +1,18 @@
 package com.assignment06.Classes;
 
 import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.JTextField;
 
 public class ViewClass {
 	public JFrame frame;
+	private JTextField textField;
 	/**
 	 * Create the application.
 	 */
@@ -15,9 +24,71 @@ public class ViewClass {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		PlayerMethods pm = new PlayerMethods();
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.getContentPane().setBackground(new Color(255, 255, 255));
+		frame.getContentPane().setForeground(new Color(0, 0, 0));
+		frame.setBounds(100, 100, 400, 150);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
+		
+		JLabel lblNewLabel = new JLabel("Music:");
+		lblNewLabel.setBounds(12, 23, 56, 16);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		frame.getContentPane().add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setBounds(70, 21, 266, 22);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JButton btnPlay = new JButton("");
+		btnPlay.setBounds(12, 57, 46, 25);
+		btnPlay.setBackground(new Color(255, 255, 255));
+		btnPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pm.play();
+			}
+		});
+		frame.getContentPane().setLayout(null);
+		btnPlay.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\playp.jpg"));
+		frame.getContentPane().add(btnPlay);
+		
+		JButton btnPause = new JButton("");
+		btnPause.setBounds(70, 57, 46, 25);
+		btnPause.setBackground(new Color(255, 255, 255));
+		btnPause.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\pausep.jpg"));
+		btnPause.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				pm.pause();
+			}
+		});
+		frame.getContentPane().add(btnPause);
+		
+		JButton btnStop = new JButton("");
+		btnStop.setBounds(128, 57, 46, 25);
+		btnStop.setBackground(new Color(255, 255, 255));
+		btnStop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pm.stop();
+			}
+		});
+		btnStop.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\stopp.jpg"));
+		frame.getContentPane().add(btnStop);
+		
+		JButton btnOpen = new JButton("");
+		btnOpen.setForeground(new Color(0, 0, 0));
+		btnOpen.setBounds(186, 57, 46, 25);
+		btnOpen.setBackground(new Color(255, 255, 255));
+		btnOpen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pm.open();
+				//textField.setText(getFileName);
+			}
+		});
+		btnOpen.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\openp.jpg"));
+		frame.getContentPane().add(btnOpen);
+		
 
+
+	}
 }
