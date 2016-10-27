@@ -1,5 +1,4 @@
 package com.assignment06.Classes;
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,54 +9,74 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JTextField;
 
+/**
+ * @author Christian Ström
+ *
+ */
 public class ViewClass {
 	public JFrame frame;
-	private JTextField textField;
+	private JTextField textFieldFileName;
 	/**
 	 * Create the application.
 	 */
 	public ViewClass() {
 		initialize();
 	}
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		PlayerMethods pm = new PlayerMethods();
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(255, 255, 255));
+		
+		/**
+		 * Frame
+		 */
+		frame.setResizable(false);
+		frame.getContentPane().setBackground(Color.WHITE);
 		frame.getContentPane().setForeground(new Color(0, 0, 0));
-		frame.setBounds(100, 100, 400, 150);
+		frame.setBounds(100, 100, 360, 110);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel lblNewLabel = new JLabel("Music:");
-		lblNewLabel.setBounds(12, 23, 56, 16);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		frame.getContentPane().add(lblNewLabel);
+		/**
+		 * Label "Music:"
+		 */
+		JLabel labelMusic = new JLabel("Music:");
+		labelMusic.setBounds(12, 13, 56, 16);
+		labelMusic.setFont(new Font("Tahoma", Font.BOLD, 15));
+		frame.getContentPane().add(labelMusic);
 		
-		textField = new JTextField();
-		textField.setBackground(Color.WHITE);
-		textField.setEditable(false);
-		textField.setBounds(70, 21, 266, 22);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		/**
+		 * TextField for the filenames
+		 */
+		textFieldFileName = new JTextField();
+		textFieldFileName.setBackground(Color.WHITE);
+		textFieldFileName.setEditable(false);
+		textFieldFileName.setBounds(70, 11, 266, 22);
+		frame.getContentPane().add(textFieldFileName);
+		textFieldFileName.setColumns(10);
 		
+		/**
+		 * Play button
+		 */
 		JButton btnPlay = new JButton("");
-		btnPlay.setBounds(12, 57, 46, 25);
+		btnPlay.setBounds(12, 42, 46, 25);
 		btnPlay.setBackground(new Color(255, 255, 255));
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pm.play();
-				textField.setText(pm.getFileName());
+				textFieldFileName.setText(pm.getFileName());
 			}
 		});
 		frame.getContentPane().setLayout(null);
 		btnPlay.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\playp.jpg"));
 		frame.getContentPane().add(btnPlay);
 		
+		/**
+		 * Pause button
+		 */
 		JButton btnPause = new JButton("");
-		btnPause.setBounds(70, 57, 46, 25);
+		btnPause.setBounds(70, 42, 46, 25);
 		btnPause.setBackground(new Color(255, 255, 255));
 		btnPause.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\pausep.jpg"));
 		btnPause.addActionListener(new ActionListener() {
@@ -67,8 +86,11 @@ public class ViewClass {
 		});
 		frame.getContentPane().add(btnPause);
 	
+		/**
+		 * Stop button
+		 */
 		JButton btnStop = new JButton("");
-		btnStop.setBounds(128, 57, 46, 25);
+		btnStop.setBounds(128, 42, 46, 25);
 		btnStop.setBackground(new Color(255, 255, 255));
 		btnStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -78,14 +100,17 @@ public class ViewClass {
 		btnStop.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\stopp.jpg"));
 		frame.getContentPane().add(btnStop);
 		
+		/**
+		 * Open button
+		 */
 		JButton btnOpen = new JButton("");
 		btnOpen.setForeground(new Color(0, 0, 0));
-		btnOpen.setBounds(186, 57, 46, 25);
+		btnOpen.setBounds(187, 42, 46, 25);
 		btnOpen.setBackground(new Color(255, 255, 255));
 		btnOpen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pm.open();
-				textField.setText(pm.getFileName());
+				textFieldFileName.setText(pm.getFileName());
 			}
 		});
 		btnOpen.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\openp.jpg"));

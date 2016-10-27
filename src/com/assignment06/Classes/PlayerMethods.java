@@ -1,15 +1,21 @@
 package com.assignment06.Classes;
-
 import java.io.File;
 import javax.swing.JFileChooser;
 import com.assignment06.Interfaces.PlayerInterface;
 import jaco.mp3.player.MP3Player;
 
+/**
+ * @author Christian Ström
+ *
+ */
 public class PlayerMethods implements PlayerInterface{
 
 	private String fileName = "";
 	private MP3Player mp3 = new MP3Player();
-	
+
+	/**
+	 *	If there is no current file, open()
+	 */
 	public void play() {
 		if(fileName == ""){
 			open();
@@ -23,12 +29,20 @@ public class PlayerMethods implements PlayerInterface{
 	public void stop() {
 		mp3.stop();
 	}
+	/**
+ 	* 	Opens a file, sets fileName.
+ 	* 	Stops any current music playing and plays the new music.
+ 	* 	NullPointerException deals with errors caused by clicking
+ 	* 	"cancel" in the application.
+ 	*/
 	public void open() {
 		try{
 			JFileChooser fc = new JFileChooser();
 			int returnVal = fc.showOpenDialog(null);
 			File selectedFile = fc.getSelectedFile();
+			
 			this.fileName = selectedFile.getName();
+			
 			stop();
 			setMP3(new MP3Player(selectedFile));
 			play();
