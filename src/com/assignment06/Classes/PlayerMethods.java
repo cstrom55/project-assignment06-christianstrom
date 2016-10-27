@@ -1,31 +1,51 @@
 package com.assignment06.Classes;
 
+import java.io.File;
+import javax.swing.JFileChooser;
 import com.assignment06.Interfaces.PlayerInterface;
+import jaco.mp3.player.MP3Player;
 
 public class PlayerMethods implements PlayerInterface{
 
-	@Override
+	private String fileName = "";
+	private MP3Player mp3 = new MP3Player();
+	
 	public void play() {
-		// TODO Auto-generated method stub
-		
+		if(fileName == ""){
+			open();
+		}else{
+			mp3.play();
+		}
 	}
-
-	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
-		
+		mp3.pause();
 	}
-
-	@Override
 	public void stop() {
-		// TODO Auto-generated method stub
-		
+		mp3.stop();
 	}
-
-	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		try{
+			JFileChooser fc = new JFileChooser();
+			int returnVal = fc.showOpenDialog(null);
+			File selectedFile = fc.getSelectedFile();
+			this.fileName = selectedFile.getName();
+			stop();
+			setMP3(new MP3Player(selectedFile));
+			play();
+		}catch(NullPointerException e){
+			e.getMessage();
+		}
 	}
-
+	public String getFileName(){
+		return fileName;
+	}
+	public void setFileName(String fileName){
+		this.fileName = fileName;
+	}
+	public MP3Player getMP3(){
+		return mp3;
+	}
+	public void setMP3(MP3Player mp3){
+		this.mp3 = mp3;
+	}
 }

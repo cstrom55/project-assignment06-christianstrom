@@ -37,6 +37,8 @@ public class ViewClass {
 		frame.getContentPane().add(lblNewLabel);
 		
 		textField = new JTextField();
+		textField.setBackground(Color.WHITE);
+		textField.setEditable(false);
 		textField.setBounds(70, 21, 266, 22);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
@@ -47,6 +49,7 @@ public class ViewClass {
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pm.play();
+				textField.setText(pm.getFileName());
 			}
 		});
 		frame.getContentPane().setLayout(null);
@@ -63,7 +66,7 @@ public class ViewClass {
 			}
 		});
 		frame.getContentPane().add(btnPause);
-		
+	
 		JButton btnStop = new JButton("");
 		btnStop.setBounds(128, 57, 46, 25);
 		btnStop.setBackground(new Color(255, 255, 255));
@@ -82,13 +85,10 @@ public class ViewClass {
 		btnOpen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pm.open();
-				//textField.setText(getFileName);
+				textField.setText(pm.getFileName());
 			}
 		});
 		btnOpen.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\openp.jpg"));
 		frame.getContentPane().add(btnOpen);
-		
-
-
 	}
 }
