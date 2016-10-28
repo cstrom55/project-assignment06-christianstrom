@@ -13,38 +13,42 @@ public class PlayerMethods implements PlayerInterface{
 	private MP3Player mp3 = new MP3Player();
 
 	/**
-	 *	If there is no current file, open()
+	 *	Plays the chosen file if it exists
 	 */
 	public void play() {
 		if(fileName != ""){
 			mp3.play();
 		}
 	}
+	/**
+	 * Pauses the chosen file if it exists
+	 */
 	public void pause() {
-		mp3.pause();
+		if(fileName != ""){
+			mp3.pause();
+		}
 	}
+	/**
+	 * 	Stops the chosen file if it exists
+	 */
 	public void stop() {
-		mp3.stop();
+		if(fileName != ""){
+			mp3.stop();
+		}
 	}
 	/**
  	* 	Opens a file, sets fileName.
- 	* 	Stops any current music playing and plays the new music.
- 	* 	NullPointerException deals with errors caused by clicking
- 	* 	"cancel" in the application.
+ 	* 	Stops any current music playing
  	*/
 	public void open() {
-		try{
-			JFileChooser fc = new JFileChooser();
-			fc.setCurrentDirectory(new java.io.File("C:\\Users\\Christian Ström\\Music"));
-			int returnVal = fc.showOpenDialog(null);
-			if(returnVal == JFileChooser.APPROVE_OPTION){
-				stop();
-				File selectedFile = fc.getSelectedFile();
-				this.setFileName(selectedFile.getName());
-				this.setMP3(new MP3Player(fc.getSelectedFile()));
-			}
-		}catch(NullPointerException e){
-			e.getMessage();
+		JFileChooser fc = new JFileChooser();
+		fc.setCurrentDirectory(new java.io.File("C:\\Users\\Christian Ström\\Music"));
+		int returnVal = fc.showOpenDialog(null);
+		if(returnVal == JFileChooser.APPROVE_OPTION){
+			stop();
+			File selectedFile = fc.getSelectedFile();
+			this.setFileName(selectedFile.getName());
+			this.setMP3(new MP3Player(fc.getSelectedFile()));
 		}
 	}
 	/**
@@ -61,9 +65,16 @@ public class PlayerMethods implements PlayerInterface{
 	public void setFileName(String fileName){
 		this.fileName = fileName;
 	}
+	/**
+	 * @return mp3
+	 */
 	public MP3Player getMP3(){
 		return mp3;
 	}
+	/**
+	 * 
+	 * @param mp3
+	 */
 	public void setMP3(MP3Player mp3){
 		this.mp3 = mp3;
 	}
