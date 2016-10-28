@@ -9,7 +9,6 @@ import jaco.mp3.player.MP3Player;
  *
  */
 public class PlayerMethods implements PlayerInterface{
-
 	private String fileName = "";
 	private MP3Player mp3 = new MP3Player();
 
@@ -38,21 +37,30 @@ public class PlayerMethods implements PlayerInterface{
 	public void open() {
 		try{
 			JFileChooser fc = new JFileChooser();
+			fc.setCurrentDirectory(new java.io.File("C:\\Users\\Christian Ström\\Music"));
 			int returnVal = fc.showOpenDialog(null);
-			File selectedFile = fc.getSelectedFile();
-			
-			this.fileName = selectedFile.getName();
-			
-			stop();
-			setMP3(new MP3Player(selectedFile));
-			play();
+			if(returnVal == JFileChooser.APPROVE_OPTION){
+				stop();
+				File selectedFile = fc.getSelectedFile();
+				this.setFileName(selectedFile.getName());
+				this.setMP3(new MP3Player(fc.getSelectedFile()));
+				play();
+			}
 		}catch(NullPointerException e){
 			e.getMessage();
 		}
 	}
+	/**
+	 * 
+	 * @return fileName
+	 */
 	public String getFileName(){
 		return fileName;
 	}
+	/**
+	 * 
+	 * @param fileName
+	 */
 	public void setFileName(String fileName){
 		this.fileName = fileName;
 	}

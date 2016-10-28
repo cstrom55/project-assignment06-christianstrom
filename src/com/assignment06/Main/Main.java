@@ -6,17 +6,13 @@ import com.assignment06.Classes.ViewClass;
  * @author Christian Ström
  *
  */
-public class Main {
-	/**
-	 * Launches the program
-	 * @param args
-	 */
+public class Main{
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable(){
 			public void run(){
 				try{
-					ViewClass window = new ViewClass();
-					window.frame.setVisible(true);
+					ViewClass vc = new ViewClass();
+					vc.setVisible(true);
 				}catch(Exception e){
 					e.printStackTrace();
 				}
