@@ -5,8 +5,9 @@ import com.assignment06.Interfaces.PlayerInterface;
 import jaco.mp3.player.MP3Player;
 
 /**
+ * The methods for the application
+ * 
  * @author Christian Ström
- *
  */
 public class PlayerMethods implements PlayerInterface{
 	private String fileName = "";
@@ -42,7 +43,6 @@ public class PlayerMethods implements PlayerInterface{
  	*/
 	public void open() {
 		JFileChooser fc = new JFileChooser();
-		fc.setCurrentDirectory(new java.io.File("C:\\Users\\Christian Ström\\Music"));
 		int returnVal = fc.showOpenDialog(null);
 		if(returnVal == JFileChooser.APPROVE_OPTION){
 			stop();
@@ -52,27 +52,28 @@ public class PlayerMethods implements PlayerInterface{
 		}
 	}
 	/**
-	 * 
+	 * getter for fileName
 	 * @return fileName
 	 */
 	public String getFileName(){
 		return fileName;
 	}
 	/**
-	 * 
+	 * Setter for fileName
 	 * @param fileName
 	 */
 	public void setFileName(String fileName){
 		this.fileName = fileName;
 	}
 	/**
+	 * Getter for mp3
 	 * @return mp3
 	 */
 	public MP3Player getMP3(){
 		return mp3;
 	}
 	/**
-	 * 
+	 * Setter for mp3
 	 * @param mp3
 	 */
 	public void setMP3(MP3Player mp3){

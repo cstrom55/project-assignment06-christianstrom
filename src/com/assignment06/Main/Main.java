@@ -3,8 +3,9 @@ import java.awt.EventQueue;
 import com.assignment06.Classes.ViewClass;
 
 /**
+ * Main for the application
+ * 
  * @author Christian Ström
- *
  */
 public class Main{
 	public static void main(String[] args) {

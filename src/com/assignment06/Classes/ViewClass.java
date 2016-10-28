@@ -10,8 +10,9 @@ import javax.swing.JTextField;
 import java.awt.Font;
 
 /**
+ * The implementation of the GUI
+ * 
  * @author Christian Ström
- *
  */
 public class ViewClass extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
@@ -45,46 +46,46 @@ public class ViewClass extends JFrame implements ActionListener{
 		setTitle("MP3 Player");
 		setBounds(100, 100, 330, 125);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		label.setFont(new Font("Tahoma", Font.BOLD, 15));
+		getContentPane().setLayout(null);
+
 		
 		//Label
 		label.setBounds(12, 13, 56, 16);
+		label.setFont(new Font("Tahoma", Font.BOLD, 15));
 		getContentPane().add(label);
-		textField.setForeground(Color.BLACK);
-		textField.setBackground(Color.WHITE);
 		
 		//TextField
 		textField.setEditable(false);
 		textField.setBounds(70, 10, 214, 22);
-		getContentPane().add(textField);
 		textField.setColumns(10);
+		textField.setForeground(Color.BLACK);
+		textField.setBackground(Color.WHITE);
+		getContentPane().add(textField);
 		
 		//Play
 		btnPlay.setBounds(70, 45, 46, 25);
 		btnPlay.setBackground(new Color(255, 255, 255));
-		getContentPane().setLayout(null);
-		btnPlay.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\playp.jpg"));
+		btnPlay.setIcon(new ImageIcon("icons\\playp.jpg"));
 		getContentPane().add(btnPlay);
 		
 		//Pause
 		btnPause.setBounds(125, 45, 46, 25);
 		btnPause.setBackground(new Color(255, 255, 255));
-		btnPause.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\pausep.jpg"));
+		btnPause.setIcon(new ImageIcon("icons\\pausep.jpg"));
 		getContentPane().add(btnPause);
 		
 		//Stop
 		btnStop.setBounds(183, 45, 46, 25);
 		btnStop.setBackground(new Color(255, 255, 255));
-		btnStop.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\stopp.jpg"));
+		btnStop.setIcon(new ImageIcon("icons\\stopp.jpg"));
 		getContentPane().add(btnStop);
 		
 		//Open
 		btnOpen.setBounds(238, 45, 46, 25);
 		btnOpen.setBackground(new Color(255, 255, 255));
-		btnOpen.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\openp.jpg"));
+		btnOpen.setIcon(new ImageIcon("icons\\openp.jpg"));
 		getContentPane().add(btnOpen);
 	}
-	
 	/**
 	 * 	Adding actions for the buttons
 	 */
@@ -96,11 +97,11 @@ public class ViewClass extends JFrame implements ActionListener{
 	}
 	/**
 	 * 	Sets actions for the JButtons
+	 * 	Sets the filename in textField when using open()
 	 */
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource() == btnPlay){
 			pm.play();
-			textField.setText(pm.getFileName());
 		}
 		else if(e.getSource() == btnPause){
 			pm.pause();
