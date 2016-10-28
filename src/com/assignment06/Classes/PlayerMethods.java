@@ -16,9 +16,7 @@ public class PlayerMethods implements PlayerInterface{
 	 *	If there is no current file, open()
 	 */
 	public void play() {
-		if(fileName == ""){
-			open();
-		}else{
+		if(fileName != ""){
 			mp3.play();
 		}
 	}
@@ -44,7 +42,6 @@ public class PlayerMethods implements PlayerInterface{
 				File selectedFile = fc.getSelectedFile();
 				this.setFileName(selectedFile.getName());
 				this.setMP3(new MP3Player(fc.getSelectedFile()));
-				play();
 			}
 		}catch(NullPointerException e){
 			e.getMessage();

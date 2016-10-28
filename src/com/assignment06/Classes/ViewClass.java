@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JTextField;
+import java.awt.Font;
 
 /**
  * @author Christian Ström
@@ -32,6 +33,7 @@ public class ViewClass extends JFrame implements ActionListener{
 	 * 	Create the application
 	 */
 	public ViewClass() {
+		getContentPane().setBackground(Color.WHITE);
 		createUserInterface();
 		addActionListeners();
 	}
@@ -43,10 +45,13 @@ public class ViewClass extends JFrame implements ActionListener{
 		setTitle("MP3 Player");
 		setBounds(100, 100, 330, 125);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		label.setFont(new Font("Tahoma", Font.BOLD, 15));
 		
 		//Label
 		label.setBounds(12, 13, 56, 16);
 		getContentPane().add(label);
+		textField.setForeground(Color.BLACK);
+		textField.setBackground(Color.WHITE);
 		
 		//TextField
 		textField.setEditable(false);
@@ -55,26 +60,26 @@ public class ViewClass extends JFrame implements ActionListener{
 		textField.setColumns(10);
 		
 		//Play
-		btnPlay.setBounds(12, 42, 46, 25);
+		btnPlay.setBounds(70, 45, 46, 25);
 		btnPlay.setBackground(new Color(255, 255, 255));
 		getContentPane().setLayout(null);
 		btnPlay.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\playp.jpg"));
 		getContentPane().add(btnPlay);
 		
 		//Pause
-		btnPause.setBounds(70, 42, 46, 25);
+		btnPause.setBounds(125, 45, 46, 25);
 		btnPause.setBackground(new Color(255, 255, 255));
 		btnPause.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\pausep.jpg"));
 		getContentPane().add(btnPause);
 		
 		//Stop
-		btnStop.setBounds(128, 42, 46, 25);
+		btnStop.setBounds(183, 45, 46, 25);
 		btnStop.setBackground(new Color(255, 255, 255));
 		btnStop.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\stopp.jpg"));
 		getContentPane().add(btnStop);
 		
 		//Open
-		btnOpen.setBounds(187, 42, 46, 25);
+		btnOpen.setBounds(238, 45, 46, 25);
 		btnOpen.setBackground(new Color(255, 255, 255));
 		btnOpen.setIcon(new ImageIcon("C:\\Users\\Christian Str\u00F6m\\Desktop\\icons\\openp.jpg"));
 		getContentPane().add(btnOpen);
